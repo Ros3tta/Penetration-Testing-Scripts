@@ -17,10 +17,10 @@ fi
 
 url="$proto://$target:$port"
 
-echo "Scanning $url"
-
 wafw00f -a "$url" | sed -n '/Checking/,$p'
 echo -e ""
 curl -skIL "$url"
 curl -skIL -X OPTIONS "$url"
 whatweb -a 3 "$url"
+echo -e ""
+nikto -host "$url"
