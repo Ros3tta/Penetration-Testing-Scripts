@@ -19,7 +19,7 @@ url="$proto://$target:$port"
 
 echo "Scanning $url"
 
-wafw00f -a "$url"
+wafw00f -a "$url" | sed -n '/Checking/,$p'
 echo -e ""
 curl -skIL "$url"
 curl -skIL -X OPTIONS "$url"
